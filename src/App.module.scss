@@ -1,0 +1,22 @@
+@import "./styled/variables.scss";
+
+.all {
+  width: 100vw;
+  height: 100vh;
+  background: $background-default-color;
+  
+}
+.back__svg{
+  svg {
+    
+    position: absolute;
+    width: 602px;
+    height: 880.52px;
+    right: 0;
+    
+    opacity: 0.5;
+
+    transform: translate(0, -35%);
+    
+  }
+}
