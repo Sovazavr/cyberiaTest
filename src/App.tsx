@@ -2,6 +2,7 @@ import React from 'react';
 import s from "./App.module.scss";
 import { GlobalSVGSelector } from './components/GlobalSVGSelector/GlobalSVGSelector';
 import Header from './components/Header/Header';
+import Content from './components/Content/Content';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <div className={s.back__svg}>
         <GlobalSVGSelector typeSvg={'back-svg'} />
       </div>
+      <Content/>
 
     </div>
 

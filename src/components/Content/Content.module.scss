@@ -1,0 +1,94 @@
+@import "../../styled/variables.scss";
+.content__wrapper {
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+}
+.block__content {
+    margin: 0 auto;
+    transition: width 0.2s;
+    width: 1240px;
+}
+
+.open__path {
+    margin-top: 65px;
+    padding-bottom: 50px;
+    .begin__path {
+        color: $text-path-color;
+        cursor: pointer;
+    }
+    .end__path {
+        color: $text-end-path-color;
+    }
+}
+
+.content__title {
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 45px;
+    margin: 0;
+    color: $text-default-color;
+    // padding-bottom: 50px;
+}
+
+.project__item::before {
+    background-blend-mode: multiply;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(1turn, #090b21 36.98%, rgba(49, 51, 65, 0) 100.42%) no-repeat;
+    border-radius: inherit;
+    content: "";
+    position: absolute;
+    min-width: 250px;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s ease-in-out, background 0.2s;
+    width: 100%;
+}
+
+.projects__list {
+    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 56px;
+}
+
+.image__item {
+    width: 100%;
+    height: 300px;
+    background-image: url(https://krot.info/uploads/posts/2022-03/1646203671_19-krot-info-p-toni-stark-mem-smeshnie-foto-21.jpg);
+    display: flex;
+    flex-direction: column;
+    color: $text-default-color;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.project__filter__wrapper {
+    margin: 0 auto;
+    transition: width 0.2s;
+    width: 1240px;
+    margin-top: 30px;
+}
+.list__filter {
+    list-style: none;
+
+    color: $text-default-color;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+}
+.list__filter__item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px 29px;
+    gap: 5px;
+    background-color: $card-filter-background;
+    border-radius: 7px;
+    box-shadow: $card-filter-box-shadow;
+}
