@@ -4,7 +4,7 @@ import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 
 const Header = () => {
     return (
-        <header className={`${s.header} ${s.header__block}`}>
+        <header className={s.header}>
             <div className={s.header__content__wrapper}>
             <span className={s.header__logo}>
                 <GlobalSVGSelector typeSvg={'company-name'} />
