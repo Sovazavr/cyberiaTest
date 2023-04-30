@@ -22,6 +22,7 @@ const Content = () => {
             <div className={s.projects__list}>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
                     <div className={s.image__item}>
+                        <div className={s.blackout}></div>
                         <span>
                             Какой-то умный текст и многа букав
                         </span>
@@ -32,29 +33,64 @@ const Content = () => {
 
                 </a>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
-                    <span>
-                        Какой-то умный текст и многа букав
-                    </span>
+                    <div className={s.image__item}>
+                        <div className={s.blackout}></div>
+                        <span>
+                            Какой-то умный текст и многа букав
+                        </span>
+                        <span>
+                            Еще что-то про умный текст сверху
+                        </span>
+                    </div>
+
                 </a>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
-                    <span>
-                        Какой-то умный текст и многа букав
-                    </span>
+                    <div className={s.image__item}>
+                        <div className={s.blackout}></div>
+                        <span>
+                            Какой-то умный текст и многа букав
+                        </span>
+                        <span>
+                            Еще что-то про умный текст сверху
+                        </span>
+                    </div>
+
                 </a>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
-                    <span>
-                        Какой-то умный текст и многа букав
-                    </span>
+                    <div className={s.image__item}>
+                        <div className={s.blackout}></div>
+                        <span>
+                            Какой-то умный текст и многа букав
+                        </span>
+                        <span>
+                            Еще что-то про умный текст сверху
+                        </span>
+                    </div>
+
                 </a>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
-                    <span>
-                        Какой-то умный текст и многа букав
-                    </span>
+                    <div className={s.image__item}>
+                        <div className={s.blackout}></div>
+                        <span>
+                            Какой-то умный текст и многа букав
+                        </span>
+                        <span>
+                            Еще что-то про умный текст сверху
+                        </span>
+                    </div>
+
                 </a>
                 <a className={`${s.project__item} ${s.project__list__item}`}>
-                    <span>
-                        Какой-то умный текст и многа букав
-                    </span>
+                    <div className={s.image__item}>
+                        <div className={s.blackout}></div>
+                        <span>
+                            Какой-то умный текст и многа букав
+                        </span>
+                        <span>
+                            Еще что-то про умный текст сверху
+                        </span>
+                    </div>
+
                 </a>
             </div>
         </div>

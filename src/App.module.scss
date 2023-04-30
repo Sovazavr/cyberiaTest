@@ -4,19 +4,17 @@
   width: 100vw;
   height: 100%;
   background: $background-default-color;
-  
 }
-.back__svg{
-  svg {
-    
-    position: absolute;
-    width: 602px;
-    height: 880.52px;
-    right: 0;
-    
-    opacity: 0.5;
-
-    transform: translate(0, -35%);
-    
-  }
+.back__svg {
+  background-image: url(https://cyberia.studio/static/media/header-contacts-pattern.4a99dba37c64908a5fde.svg);
+  background-repeat: no-repeat;
+  background-position: 50vw 0px;
+  background-size: 800px;
+  content: "";
+  display: block;
+  height: 100%;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }

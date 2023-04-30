@@ -10,7 +10,7 @@ function App() {
     <div className={s.all}>
       <Header/>
       <div className={s.back__svg}>
-        <GlobalSVGSelector typeSvg={'back-svg'} />
+        {/* <GlobalSVGSelector typeSvg={'back-svg'} /> */}
       </div>
       <Content/>
 
