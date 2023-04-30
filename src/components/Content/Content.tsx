@@ -20,75 +20,87 @@ const Content = () => {
                 </ul>
             </div>
             <div className={s.projects__list}>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={s.project__list__item}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+                       
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={`${s.project__list__item}`}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={`${s.project__list__item}`}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={`${s.project__list__item}`}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={`${s.project__list__item}`}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
-                <a className={`${s.project__item} ${s.project__list__item}`}>
+                <a className={`${s.project__list__item}`}>
                     <div className={s.image__item}>
                         <div className={s.blackout}></div>
-                        <span>
+
+                        <span className={s.project__title}>
                             Какой-то умный текст и многа букав
                         </span>
-                        <span>
+                        <span className={s.project__description}>
                             Еще что-то про умный текст сверху
                         </span>
+
                     </div>
 
                 </a>
