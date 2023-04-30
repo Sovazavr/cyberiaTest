@@ -53,13 +53,12 @@
     margin-top: 56px;
 }
 
-
 .blackout {
     width: 100%;
     height: 100%;
     position: absolute;
     opacity: 0;
-    background: linear-gradient(360deg, #090B21 20%, rgba(49, 51, 65, 0) 100%);
+    background: linear-gradient(360deg, #090b21 20%, rgba(49, 51, 65, 0) 100%);
     &:hover {
         animation: opacity 0.3s forwards;
     }
@@ -81,13 +80,12 @@
     background-repeat: no-repeat;
     position: relative;
     border-radius: 7px;
-    
+
     span {
         z-index: 5;
         pointer-events: none;
     }
 }
-
 
 .project__title {
     color: #fff;
@@ -120,7 +118,7 @@
 .list__filter {
     list-style: none;
     color: $text-default-color;
-    cursor: pointer;
+    
     display: flex;
     justify-content: space-around;
 }
@@ -130,9 +128,13 @@
     align-items: flex-start;
     padding: 10px 29px;
     gap: 5px;
+    cursor: pointer;
     background-color: $card-filter-background;
     border-radius: 7px;
-    box-shadow: $card-filter-box-shadow;
+    box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.35);
+    &:hover {
+        animation: shadow 0.3s forwards;
+    }
 }
 
 @keyframes opacity {
@@ -144,4 +146,11 @@
         z-index: 4;
     }
 }
-
+@keyframes shadow {
+    0% {
+        box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.35);
+    }
+    100% {
+        box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.85);
+    }
+}
