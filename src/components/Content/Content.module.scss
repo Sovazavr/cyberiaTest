@@ -11,6 +11,7 @@
     position: relative;
     z-index: 10;
     padding: 25px 0;
+    
 }
 
 .open__path {
@@ -131,7 +132,7 @@
     cursor: pointer;
     background-color: $card-filter-background;
     border-radius: 7px;
-    box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.35);
+    box-shadow: 0px 14px 11px rgba(17, 20, 31, 0.35);
     &:hover {
         animation: shadow 0.3s forwards;
     }
@@ -148,9 +149,9 @@
 }
 @keyframes shadow {
     0% {
-        box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.35);
+        box-shadow: 0px 14px 11px rgba(17, 20, 31, 0.35);
     }
     100% {
-        box-shadow: 0px 14px 61px rgba(17, 20, 31, 0.85);
+        box-shadow: 0px 14px 11px rgba(17, 20, 31, 0.85);
     }
 }
