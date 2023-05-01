@@ -139,3 +139,37 @@
         text-align: center;
     }
 }
+
+.form__file{
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: none;
+    
+    height: 26px;
+    overflow: hidden;
+    padding: 2px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    height: 100%;
+    input {
+        opacity: 0;
+        width: 15px;
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+    }
+    span {
+        color: $text-default-color;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 18px;
+        letter-spacing: 0em;
+        margin-right: 20px;
+    }
+}
+
+

@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import s from "./Form.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 
 interface FormValues {
     email: string,
     phone: string,
-    
+
 }
 
 const Form = () => {
-    const [emailValue, setEmailValue] = useState<FormValues>({email: '', phone: ''});
+    const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '' });
+    const [file, setFile] = useState<File>()
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0])
+        }
+    }
 
 
     return (
@@ -28,12 +35,17 @@ const Form = () => {
                         <label className={s.placeholder__label}>E-mail</label>
                     </div>
                     <div className={s.form__input__wrapper}>
-                        <input type='phone'/>
+                        <input type='phone' />
                         <label className={s.placeholder__label}>Телефон</label>
                     </div>
                     <div className={s.form__textarea__wrapper}>
                         <textarea className={s.form__textarea} />
                         <label className={s.placeholder__label}>Сообщение</label>
+                        <div className={s.form__file}>
+                            <span>{file ? file.name : ""}</span>
+                            <input id="upload" type="file" name="upload" onChange={handleFileChange} />
+                            <GlobalSVGSelector typeSvg='paperclip'/>
+                        </div>
                     </div>
                     <div className={s.form__button__wrapper}>
                         <button>ОТПРАВИТЬ</button>
