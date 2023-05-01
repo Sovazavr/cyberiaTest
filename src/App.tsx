@@ -4,17 +4,19 @@ import { GlobalSVGSelector } from './components/GlobalSVGSelector/GlobalSVGSelec
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Form from './components/Form/Form';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
   return (
     <div className={s.all}>
-      <Header/>
+      <Header />
       <div className={s.back__svg}>
         {/* <GlobalSVGSelector typeSvg={'back-svg'} /> */}
       </div>
-      <Content/>
-      <Form/>
+      <Content />
+      <Form />
+      <Footer />
     </div>
 
   );

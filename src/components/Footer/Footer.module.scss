@@ -1,0 +1,56 @@
+@import "../../styled/variables.scss";
+
+.footer__block {
+    width: 100%;
+    background-color: $background-default-color;
+    margin-top: 100px;
+    height: 200px;
+}
+
+.block__container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+    row-gap: 60px;
+    margin: 0 auto;
+
+    width: 1080px;
+}
+.footer__company {
+    color: $text-default-color;
+    display: flex;
+    flex-direction: column;
+    span {
+        margin-top: 15px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        width: 160px;
+    }
+}
+.footer__information {
+    color: $text-default-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    ul,
+    span {
+        width: max-content;
+        list-style: none;
+        // font-family: "Open Sans";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+        li {
+            margin-bottom: 15px;
+        }
+    }
+    span {
+        width: 30%;
+    }
+}
