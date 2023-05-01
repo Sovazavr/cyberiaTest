@@ -170,6 +170,23 @@ export const GlobalSVGSelector = ({ typeSvg }: Props) => {
                     <path d="M17.4994 9.66699L8.38756 18.9301C8.05937 19.2583 7.875 19.7034 7.875 20.1675C7.875 20.6317 8.05937 21.0768 8.38756 21.405C8.71575 21.7332 9.16087 21.9175 9.625 21.9175C10.0891 21.9175 10.5342 21.7332 10.8624 21.405L21.7242 10.3919C22.0492 10.0669 22.307 9.68102 22.4829 9.25638C22.6588 8.83174 22.7494 8.37662 22.7494 7.91699C22.7494 7.45737 22.6588 7.00224 22.4829 6.5776C22.307 6.15296 22.0492 5.76712 21.7242 5.44212C21.3992 5.11711 21.0134 4.85931 20.5888 4.68341C20.1641 4.50752 19.709 4.41699 19.2494 4.41699C18.7897 4.41699 18.3346 4.50752 17.91 4.68341C17.4853 4.85931 17.0995 5.11711 16.7745 5.44212L5.91269 16.4552C4.92812 17.4398 4.375 18.7751 4.375 20.1675C4.375 21.5599 4.92812 22.8953 5.91269 23.8798C6.89726 24.8644 8.23261 25.4175 9.625 25.4175C11.0174 25.4175 12.3527 24.8644 13.3373 23.8798L22.3119 14.917" stroke="#EEF3FF" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             )
+        case 'scroll-btn':
+            return (
+                <svg width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 13.0581L13.0579 2.00022L24.1158 13.0581" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M13.0586 28.0645L13.0586 2.00068" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+
+            )
+        case 'scroll-btn-long':
+            return (
+                <svg width="27" height="47" viewBox="0 0 27 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 13.0581L13.0579 2.00022L24.1158 13.0581" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M13 45L13 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            )
 
 
         default:

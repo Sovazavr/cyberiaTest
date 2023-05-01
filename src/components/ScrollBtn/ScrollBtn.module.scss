@@ -1,0 +1,20 @@
+.scroll__button {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #2d76f9;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        transition: all 0.3s ease-in-out;
+    }
+    &:hover {
+        background: #0359f3;
+    }
+}
