@@ -1,12 +1,13 @@
 import React from 'react'
 import s from "./Header.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
+import { useScrollDirection } from '../../hooks/useScrollDirection'
 
 const Header = () => {
-
+    const scrollDirection = useScrollDirection()
 
     return (
-        <header className={s.header}>
+        <header className={scrollDirection === "down" ? s.header__down : s.header}>
             <div className={s.header__content__wrapper}>
                 <span className={s.header__logo}>
                     <GlobalSVGSelector typeSvg={'company-name'} />

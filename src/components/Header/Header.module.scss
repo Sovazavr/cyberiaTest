@@ -1,10 +1,10 @@
 @import "../../styled/variables.scss";
 
 .header {
-    height: 110px;
+    height: 6rem;
     left: 0;
     padding: 0;
-    position: relative;
+    position: sticky;
     top: 0;
     transform: translateY(0);
     // transition: height 0.2s, transform 0.2s, background-color 0.2s;
@@ -13,6 +13,13 @@
     min-height: fit-content;
     background: #20212c;
     width: 100%;
+    transition: all .2s;
+}
+.header__down{
+    @extend .header;
+    transition: all .2s;
+    top: -6rem;
+    background: #20212c;
 }
 
 // @media screen and (max-width: 1279px) {

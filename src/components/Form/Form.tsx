@@ -52,8 +52,10 @@ const Form = () => {
                         <label className={activeInput === 'message' || formValue.message !== '' ? s.placeholder__label__active : s.placeholder__label}>Сообщение</label>
                         <div className={s.form__file}>
                             <span>{file ? file.name : ""}</span>
-                            <input id="upload" type="file" name="upload" onChange={handleFileChange} />
-                            <GlobalSVGSelector typeSvg='paperclip' />
+                            <div className={s.upload__wrapper}>
+                                <input id="upload" type="file" name="upload" onChange={handleFileChange} />
+                                <GlobalSVGSelector typeSvg='paperclip' />
+                            </div>
                         </div>
                     </div>
                     <div className={s.form__button__wrapper}>

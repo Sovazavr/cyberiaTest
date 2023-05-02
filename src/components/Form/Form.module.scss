@@ -142,6 +142,10 @@
         line-height: 18px;
         letter-spacing: 0em;
         text-align: center;
+        transition: all 0.2s;
+        &:hover {
+            background-color: $support-hover-color;
+        }
     }
 }
 
@@ -161,11 +165,12 @@
     vertical-align: middle;
     height: 100%;
     input {
-        opacity: 0;
-        width: 15px;
+        width: 100%;
+        height: 100%;
         position: absolute;
         right: 10px;
         cursor: pointer;
+        opacity: 0;
     }
     span {
         color: $text-default-color;
@@ -175,4 +180,8 @@
         letter-spacing: 0em;
         margin-right: 20px;
     }
+}
+.upload__wrapper {
+    cursor: pointer;
+    position: relative;
 }
