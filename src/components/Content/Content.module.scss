@@ -134,7 +134,10 @@
     border-radius: 7px;
     box-shadow: 0px 14px 11px rgba(17, 20, 31, 0.35);
     &:hover {
+        transition: all .2s;
         animation: shadow 0.3s forwards;
+        background-color: $text-default-color;
+        color: $text-light-color;
     }
 }
 

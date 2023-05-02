@@ -4,20 +4,35 @@ import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 
 const Header = () => {
 
-    
+
     return (
         <header className={s.header}>
             <div className={s.header__content__wrapper}>
-            <span className={s.header__logo}>
-                <GlobalSVGSelector typeSvg={'company-name'} />
-            </span>
-            <ul className={s.header__links}>
-                <li className={s.header__link__item}>О нас</li>
-                <li className={s.header__link__item}>Услуги</li>
-                <li className={s.header__link__item}>Проекты</li>
-                <li className={s.header__link__item}>Блог</li>
-                <li className={s.header__link__item}>Контакты</li>
-            </ul>
+                <span className={s.header__logo}>
+                    <GlobalSVGSelector typeSvg={'company-name'} />
+                </span>
+                <ul className={s.header__links}>
+                    <li className={s.header__link__item}>
+                        О нас
+                        <div className={s.hover__line}></div>
+                    </li>
+                    <li className={s.header__link__item}>
+                        Услуги
+                        <div className={s.hover__line}></div>
+                    </li>
+                    <li className={s.header__link__item}>
+                        Проекты
+                        <div className={s.hover__line}></div>
+                    </li>
+                    <li className={s.header__link__item}>
+                        Блог
+                        <div className={s.hover__line}></div>
+                    </li>
+                    <li className={s.header__link__item}>
+                        Контакты
+                        <div className={s.hover__line}></div>
+                    </li>
+                </ul>
             </div>
         </header>
     )

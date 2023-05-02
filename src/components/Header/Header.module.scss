@@ -52,7 +52,37 @@
     padding-top: 2px;
     color: $text-default-color;
     cursor: pointer;
+    position: relative;
+    text-align: center;
+    &:hover{
+        .hover__line{
+            animation: width__hover .3s forwards;
+        }
+    }
 }
+@keyframes width__hover {
+    0% {
+        width: 0%;
+        margin-left: 50%;
+    }
+    100% {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+.hover__line{
+    content: "";
+    margin-left: 50%;
+    background: $support-color;
+    border-radius: 8px;
+    height: 2px;
+    width: 0%;
+    position: relative;
+    margin-top: 2px;
+
+}
+
+
 .header__logo {
     align-items: center;
     cursor: pointer;
