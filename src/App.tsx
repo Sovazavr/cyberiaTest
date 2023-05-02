@@ -6,11 +6,15 @@ import Content from './components/Content/Content';
 import Form from './components/Form/Form';
 import Footer from './components/Footer/Footer';
 import { ScrollBtn } from './components/ScrollBtn/ScrollBtn';
+import Menu from './components/Header/Menu';
 
 
 function App() {
 
-  const [showButton, setShowButton] = useState(false)
+  const [showButton, setShowButton] = useState<boolean>(false)
+  const [openedMenu, setOpenedMenu] = useState<boolean>(false)
+
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
@@ -22,9 +26,10 @@ function App() {
   }, []);
 
 
+
   return (
     <div className={s.all}>
-      <Header />
+      <Header setOpenedMenu={setOpenedMenu}/>
       <div className={s.back__svg}>
         {/* <GlobalSVGSelector typeSvg={'back-svg'} /> */}
       </div>
@@ -32,7 +37,7 @@ function App() {
       <Form />
       <Footer />
       {showButton ? <ScrollBtn /> : <></>}
-
+      {openedMenu ? <Menu setOpenedMenu={setOpenedMenu}/> : <></>}
     </div>
 
   );
