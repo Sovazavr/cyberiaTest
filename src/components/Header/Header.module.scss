@@ -42,7 +42,7 @@
 .header__content__wrapper {
     margin: 0 auto;
     transition: width 0.2s;
-    width: 1080px;
+    width: $default-width;
 }
 .header__links {
     align-items: center;

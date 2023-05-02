@@ -7,7 +7,7 @@
 .block__content {
     margin: 0 auto;
     transition: width 0.2s;
-    width: 1080px;
+    width: $default-width;
     position: relative;
     z-index: 10;
     padding: 25px 0;
@@ -113,7 +113,7 @@
 .project__filter__wrapper {
     margin: 0 auto;
     transition: width 0.2s;
-    width: 1080px;
+    width: $default-width;
     margin-top: 30px;
 }
 .list__filter {
