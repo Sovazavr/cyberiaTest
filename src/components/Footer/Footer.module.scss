@@ -54,3 +54,9 @@
         width: 30%;
     }
 }
+
+@media screen and (max-width: 1279px) {
+    .block__container{
+        width: 90vw;
+    }
+}

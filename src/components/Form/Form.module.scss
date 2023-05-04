@@ -185,3 +185,9 @@
     cursor: pointer;
     position: relative;
 }
+
+@media screen and (max-width: 1279px) {
+    .form__block__wrapper{
+        width: 90vw;
+    }
+}
