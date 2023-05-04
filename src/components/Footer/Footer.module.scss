@@ -4,7 +4,7 @@
     width: 100%;
     background-color: $background-default-color;
     margin-top: 100px;
-    height: 200px;
+    height: fit-content;
 }
 
 .block__container {
@@ -59,4 +59,15 @@
     .block__container{
         width: 90vw;
     }
+}
+
+@media screen and (max-width: 700px){
+    .footer__information{
+        flex-wrap: wrap;
+        ul, span{
+            flex-grow: 1;
+        }
+        padding-bottom: 20px;
+    }
+    
 }

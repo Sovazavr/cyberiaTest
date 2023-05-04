@@ -110,7 +110,7 @@
 }
 
 .project__filter__wrapper {
-    margin: 0 auto;
+    
     transition: width 0.2s;
     width: $default-width;
     margin-top: 30px;
@@ -118,9 +118,9 @@
 .list__filter {
     list-style: none;
     color: $text-default-color;
-
+    padding-inline-start: 0px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .list__filter__item {
     display: flex;
@@ -163,8 +163,10 @@
     .block__content {
         width: 90vw;
     }
+    
     .list__filter {
         flex-direction: row;
+        
         flex-wrap: wrap;
         gap: 10px;
     }
@@ -177,5 +179,11 @@
 @media screen and (max-width: 1279px) and (min-width: 700px) {
     .projects__list{
         grid-template-columns: repeat(2, 2fr);
+    }
+}
+
+@media screen and (max-width: 700px){
+    .projects__list{
+        grid-template-columns: repeat(1, 1fr);
     }
 }

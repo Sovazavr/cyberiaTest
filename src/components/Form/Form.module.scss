@@ -130,6 +130,7 @@
         text-align: left;
     }
     button {
+        max-height: 80px;
         border-radius: 35px;
         background-color: $support-color;
         border: none;
@@ -187,7 +188,22 @@
 }
 
 @media screen and (max-width: 1279px) {
-    .form__block__wrapper{
+    .form__block__wrapper {
         width: 90vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .form__block__wrapper {
+        flex-wrap: wrap;
+    }
+    .form__block__info {
+        width: 90vw;
+        span {
+            display: none;
+        }
+    }
+    .form__wrapper {
+        padding-top: 20px;
     }
 }
