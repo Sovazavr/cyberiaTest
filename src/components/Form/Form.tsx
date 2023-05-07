@@ -38,7 +38,7 @@ const Form = () => {
                         <label className={activeInput === 'email' || formValue.email !== '' ? s.placeholder__label__active : s.placeholder__label}>E-mail</label>
                     </div>
                     <div className={s.form__input__wrapper}>
-                        <input type='phone' onFocus={() => setActiveInput('phone')} onBlur={() => setActiveInput('')}
+                        <input type='tel' onFocus={() => setActiveInput('phone')} onBlur={() => setActiveInput('')}
                             value={formValue.phone}
                             onChange={(e) => setFormValue({ email: formValue.email, phone: e.target.value, message: formValue.message })}
                         />
@@ -54,7 +54,8 @@ const Form = () => {
                             <span>{file ? file.name : ""}</span>
                             <div className={s.upload__wrapper}>
                                 <input id="upload" type="file" name="upload" onChange={handleFileChange} />
-                                <GlobalSVGSelector typeSvg='paperclip' />
+                                <label htmlFor="upload"> <GlobalSVGSelector typeSvg='paperclip' /> </label>
+                               
                             </div>
                         </div>
                     </div>

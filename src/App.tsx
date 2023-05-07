@@ -7,6 +7,8 @@ import Form from './components/Form/Form';
 import Footer from './components/Footer/Footer';
 import { ScrollBtn } from './components/ScrollBtn/ScrollBtn';
 import Menu from './components/Header/Menu';
+import Project from './components/Project/Project';
+import { Route, Routes} from 'react-router-dom';
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
 
-
+  
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
@@ -30,10 +32,15 @@ function App() {
   return (
     <div className={s.all}>
       <Header setOpenedMenu={setOpenedMenu}/>
-      <div className={s.back__svg}>
-        {/* <GlobalSVGSelector typeSvg={'back-svg'} /> */}
-      </div>
-      <Content />
+      {/* <div className={s.back__svg}>
+         <GlobalSVGSelector typeSvg={'back-svg'} />
+      </div> */}
+      {/*  */}
+      
+      <Routes>
+        <Route path='/' element={<Content />}/>
+        <Route path='/project' element={<Project/>}/>
+      </Routes>
       <Form />
       <Footer />
       {showButton ? <ScrollBtn /> : <></>}
