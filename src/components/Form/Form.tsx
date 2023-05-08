@@ -2,14 +2,16 @@ import React, { ChangeEvent, useState } from 'react'
 import s from "./Form.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 
+
 interface FormValues {
     email: string,
     phone: string,
     message: string,
 }
 
+
 const Form = () => {
-    const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
+    const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '+7 (___) ___ __ __', message: '' });
     const [file, setFile] = useState<File>()
     const [activeInput, setActiveInput] = useState<string>('')
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
