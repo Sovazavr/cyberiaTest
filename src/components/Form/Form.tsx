@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, FocusEvent, useState } from 'react'
 import s from "./Form.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 
@@ -11,12 +11,28 @@ interface FormValues {
 
 
 const Form = () => {
-    const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '+7 (___) ___ __ __', message: '' });
+    const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
     const [file, setFile] = useState<File>()
     const [activeInput, setActiveInput] = useState<string>('')
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             setFile(e.target.files[0])
+        }
+    }
+
+    const phoneActive = (e: FocusEvent<HTMLInputElement, Element>) => {
+        setActiveInput('phone')
+        
+        if (formValue.phone === '') {
+            setFormValue({ email: formValue.email, phone: '+7 (___) ___ __ __', message: formValue.message })
+        }
+        e.target.setSelectionRange(2, 2)
+    }
+
+    const phoneDeactive = () => {
+        setActiveInput('')
+        if (formValue.phone === '+7 (___) ___ __ __') {
+            setFormValue({ email: formValue.email, phone: '', message: formValue.message })
         }
     }
 
@@ -40,9 +56,10 @@ const Form = () => {
                         <label className={activeInput === 'email' || formValue.email !== '' ? s.placeholder__label__active : s.placeholder__label}>E-mail</label>
                     </div>
                     <div className={s.form__input__wrapper}>
-                        <input type='tel' onFocus={() => setActiveInput('phone')} onBlur={() => setActiveInput('')}
+                        <input type='tel' onFocus={(e) => phoneActive(e)} onBlur={() => phoneDeactive()}
                             value={formValue.phone}
                             onChange={(e) => setFormValue({ email: formValue.email, phone: e.target.value, message: formValue.message })}
+
                         />
                         <label className={activeInput === 'phone' || formValue.phone !== '' ? s.placeholder__label__active : s.placeholder__label}>Телефон</label>
                     </div>
@@ -57,7 +74,7 @@ const Form = () => {
                             <div className={s.upload__wrapper}>
                                 <input id="upload" type="file" name="upload" onChange={handleFileChange} />
                                 <label htmlFor="upload"> <GlobalSVGSelector typeSvg='paperclip' /> </label>
-                               
+
                             </div>
                         </div>
                     </div>

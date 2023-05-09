@@ -10,22 +10,34 @@ import Menu from './components/Header/Menu';
 import Project from './components/Project/Project';
 import { Route, Routes } from 'react-router-dom';
 import { getProjectsData } from './axios/axios';
+import { useDispatch } from 'react-redux';
+import { getProjects } from './store/slices/projectsSlice';
+
+
+import { useAppDispatch, useAppSelector } from './hooks/reduxHook';
 
 
 function App() {
 
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
-
+  const state = useAppSelector(state => state.projects.items)
   let firstRender = useRef(true)
-
+  const dispatch = useAppDispatch()
 
 
   useLayoutEffect(() => {
     if (firstRender.current) {
       firstRender.current = false
-      getProjectsData()
+      const projects = getProjectsData()
+      dispatch(getProjects(
+        { projects }
+      ))
+
+
     } else {
+      console.log("state: ", state);
+
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
           setShowButton(true);
@@ -33,6 +45,8 @@ function App() {
           setShowButton(false);
         }
       });
+
+
     }
   }, [])
 

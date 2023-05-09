@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 
 interface Category {
@@ -33,7 +33,7 @@ const projectsSlice = createSlice({
     initialState,
     reducers: {
         getProjects(state, action) {
-            state.items=action.payload.items;
+            state.items=action.payload;
         }
     }
 })
