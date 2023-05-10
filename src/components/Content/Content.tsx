@@ -3,7 +3,12 @@ import s from "./Content.module.scss"
 
 
 
+
 const Content = () => {
+    
+    
+    
+
     return (
         <div className={`${s.block__content}`}>
             <div className={s.content__wrapper}>

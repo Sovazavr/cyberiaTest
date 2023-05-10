@@ -11,7 +11,7 @@ import Project from './components/Project/Project';
 import { Route, Routes } from 'react-router-dom';
 import { getProjectsData } from './axios/axios';
 import { useDispatch } from 'react-redux';
-import { getProjects } from './store/slices/projectsSlice';
+import { getProjects, getProjectsThunk } from './store/slices/projectsSlice';
 
 
 import { useAppDispatch, useAppSelector } from './hooks/reduxHook';
@@ -21,22 +21,22 @@ function App() {
 
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
-  const state = useAppSelector(state => state.projects.items)
-  let firstRender = useRef(true)
+  const state = useAppSelector(state => state.projects)
+
   const dispatch = useAppDispatch()
 
-
+  let firstRender = useRef(true)
   useLayoutEffect(() => {
     if (firstRender.current) {
       firstRender.current = false
-      const projects = getProjectsData()
-      dispatch(getProjects(
-        { projects }
-      ))
-
+      // const projects = getProjectsData()
+      dispatch(getProjectsThunk())
+      
+      
+     
 
     } else {
-      console.log("state: ", state);
+
 
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
@@ -49,6 +49,8 @@ function App() {
 
     }
   }, [])
+  
+  
 
   // useEffect(() => {
 

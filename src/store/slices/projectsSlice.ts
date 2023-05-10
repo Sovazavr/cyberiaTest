@@ -1,4 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { getProjectsData } from "../../axios/axios";
 
 
 interface Category {
@@ -22,22 +23,29 @@ export interface Item {
 }
 
 type TypeState = {
-    items: Item[];
+    items: any;
 }
 const initialState: TypeState = {
     items: []
 }
+export const getProjectsThunk  = createAsyncThunk("get/projects", async () => getProjectsData())
 
-const projectsSlice = createSlice({
+export const projectsSlice = createSlice({
     name: 'projects',
-    initialState,
+    initialState ,
     reducers: {
         getProjects(state, action) {
-            state.items=action.payload;
+            state.items = action.payload;
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getProjectsThunk.fulfilled, (state, action) => {
+            state.items = action.payload;
+        });
     }
 })
 
-export const {getProjects}=projectsSlice.actions
+
+export const { getProjects } = projectsSlice.actions
 export default projectsSlice.reducer
 
