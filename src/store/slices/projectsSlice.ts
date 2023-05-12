@@ -40,6 +40,7 @@ export const projectsSlice = createSlice({
         getProjects(state, action) {
             state.items = action.payload;
         }
+       
     },
     extraReducers: (builder) => {
         builder.addCase(getProjectsThunk.fulfilled, (state, action) => {

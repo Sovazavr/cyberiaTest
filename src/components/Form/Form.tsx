@@ -1,6 +1,7 @@
-import React, { ChangeEvent, FocusEvent, useState } from 'react'
+import React, { ChangeEvent, FocusEvent, FormEvent, useState } from 'react'
 import s from "./Form.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
+import { setFormData } from '../../axios/axios';
 
 
 interface FormValues {
@@ -12,8 +13,9 @@ interface FormValues {
 
 const Form = () => {
     const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
-    const [file, setFile] = useState<File>()
+    const [file, setFile] = useState<File | null>(null)
     const [activeInput, setActiveInput] = useState<string>('')
+    const [status, setStatus] = useState<number>(0)
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             setFile(e.target.files[0])
@@ -22,11 +24,11 @@ const Form = () => {
 
     const phoneActive = (e: FocusEvent<HTMLInputElement, Element>) => {
         setActiveInput('phone')
-        
+
         if (formValue.phone === '') {
             setFormValue({ email: formValue.email, phone: '+7', message: formValue.message })
         }
-        
+
     }
 
     const phoneDeactive = () => {
@@ -34,6 +36,13 @@ const Form = () => {
         if (formValue.phone === '+7') {
             setFormValue({ email: formValue.email, phone: '', message: formValue.message })
         }
+    }
+
+    function formSubmit  (e:  React.FormEvent<HTMLFormElement>)  {
+        e.preventDefault()
+        setFormData(formValue.email, formValue.phone, formValue.message, file)
+        setFormValue({ email: '', phone: '', message: '' })
+        setFile(null)
     }
 
 
@@ -47,7 +56,7 @@ const Form = () => {
                         чем мы можем быть полезны: реализовать идею или выделить разработчиков для ИТ-команды.
                         Чем больше вы нам расскажете — тем продуктивнее будет дальнейшее обсуждение.</span>
                 </div>
-                <form className={s.form__wrapper}>
+                <form className={s.form__wrapper} onSubmit={formSubmit}>
                     <div className={s.form__input__wrapper}>
                         <input type='email' onFocus={() => setActiveInput('email')} onBlur={() => setActiveInput('')}
                             value={formValue.email}
@@ -67,7 +76,11 @@ const Form = () => {
                     <div className={s.form__textarea__wrapper}>
                         <textarea className={s.form__textarea} onFocus={() => setActiveInput('message')} onBlur={() => setActiveInput('')}
                             value={formValue.message}
-                            onChange={(e) => setFormValue({ email: formValue.email, phone: formValue.phone, message: e.target.value })}
+                            onChange={(e) => {
+                                setFormValue({ email: formValue.email, phone: formValue.phone, message: e.target.value })
+                                console.log(formValue.message);
+                                
+                            }}
                             required
                         />
                         <label className={activeInput === 'message' || formValue.message !== '' ? s.placeholder__label__active : s.placeholder__label}>Сообщение</label>
@@ -81,7 +94,7 @@ const Form = () => {
                         </div>
                     </div>
                     <div className={s.form__button__wrapper}>
-                        <button >ОТПРАВИТЬ</button>
+                        <button type='submit' >ОТПРАВИТЬ</button>
                         <span>Нажимая “Отправить”, Вы даете согласие на обработку персональных данных</span>
                     </div>
                 </form>
