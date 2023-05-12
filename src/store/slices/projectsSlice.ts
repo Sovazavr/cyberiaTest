@@ -23,16 +23,19 @@ export interface Item {
 }
 
 type TypeState = {
+    isLoading: boolean,
     items: any;
 }
 const initialState: TypeState = {
-    items: []
+    isLoading: true,
+    items: [],
+
 }
-export const getProjectsThunk  = createAsyncThunk("get/projects", async () => getProjectsData())
+export const getProjectsThunk = createAsyncThunk("get/projects", async () => getProjectsData())
 
 export const projectsSlice = createSlice({
     name: 'projects',
-    initialState ,
+    initialState,
     reducers: {
         getProjects(state, action) {
             state.items = action.payload;
@@ -41,7 +44,13 @@ export const projectsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getProjectsThunk.fulfilled, (state, action) => {
             state.items = action.payload;
+            state.isLoading = false;
         });
+        builder.addCase(getProjectsThunk.pending, (state) => {
+
+            state.isLoading = true;
+        });
+
     }
 })
 

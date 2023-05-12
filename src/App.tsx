@@ -9,20 +9,21 @@ import { ScrollBtn } from './components/ScrollBtn/ScrollBtn';
 import Menu from './components/Header/Menu';
 import Project from './components/Project/Project';
 import { Route, Routes } from 'react-router-dom';
-import { getProjectsData } from './axios/axios';
-import { useDispatch } from 'react-redux';
-import { getProjects, getProjectsThunk } from './store/slices/projectsSlice';
+
+
+import { getProjectsThunk, Item } from './store/slices/projectsSlice';
 
 
 import { useAppDispatch, useAppSelector } from './hooks/reduxHook';
+
 
 
 function App() {
 
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
-  const state = useAppSelector(state => state.projects)
-
+  
+  const projects = useAppSelector(state => state.projects)
   const dispatch = useAppDispatch()
 
   let firstRender = useRef(true)
@@ -32,12 +33,14 @@ function App() {
       // const projects = getProjectsData()
       dispatch(getProjectsThunk())
       
+    // console.log("projectsType", typeof (projects.items));
+    // console.log("projectsitemsType", typeof (projects.items.items));
       
-     
-
+      
     } else {
-
-
+      console.log("projects", projects);
+      // storage.setItem('items', projects.items)
+     
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
           setShowButton(true);
@@ -48,13 +51,13 @@ function App() {
 
 
     }
-  }, [])
-  
-  
+  }, [projects])
 
-  // useEffect(() => {
 
-  // }, []);
+
+  useEffect(() => {
+    dispatch(getProjectsThunk())
+  }, [dispatch]);
 
 
 
@@ -69,7 +72,7 @@ function App() {
       {/*  */}
 
       <Routes>
-        <Route path='/' element={<Content />} />
+        <Route path='/' element={<Content/>} />
         <Route path='/project' element={<Project />} />
       </Routes>
       <Form />

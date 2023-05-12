@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from "./Content.module.scss"
+import { useAppSelector } from '../../hooks/reduxHook'
+import { Item } from '../../store/slices/projectsSlice'
+import { storage } from '../../Storage/storage'
+import { useIsLoading, useItems } from '../../hooks/useStateHooks'
 
-
+interface Props {
+    items: Item[],
+}
 
 
 const Content = () => {
-    
-    
+    const items=useItems()
+    // const projects = useAppSelector(state => state.projects)
+    console.log("items", items);
+    // console.log("projectsType", typeof (projects.items));
+    // console.log("projectsitemsType", typeof (projects.items.items));
+    // console.log("projectsitemsIt", projects.items.items[0]);
+    // useEffect(() => {
+
+
+    // }, [projects])
+    const isLoading = useIsLoading()
+
     
 
     return (
@@ -27,90 +43,44 @@ const Content = () => {
                 </ul>
             </div>
             <div className={s.projects__list}>
-                <a className={s.project__list__item}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
-                       
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
+                {!isLoading
+                    ? items.map((el: Item) => {
+                        return (
+                            <a className={s.project__list__item}>
+                                <div className={s.image__item}>
+                                    <div className={s.blackout}></div>
 
-                    </div>
+                                    <span className={s.project__title}>
+                                        {el.title}
+                                    </span>
+                                    <span className={s.project__description}>
+                                        {el.description}
+                                    </span>
 
-                </a>
-                <a className={`${s.project__list__item}`}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
+                                </div>
 
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
+                            </a>
+                        )
+                    })
+                    : <div>loading</div>
+                }
+                {/* {items.map((el: any) => {
+                    <a className={s.project__list__item}>
+                        <div className={s.image__item}>
+                            <div className={s.blackout}></div>
 
-                    </div>
+                            <span className={s.project__title}>
+                                {el.title}
+                            </span>
+                            <span className={s.project__description}>
+                                {el.description}
+                            </span>
 
-                </a>
-                <a className={`${s.project__list__item}`}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
+                        </div>
 
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
+                    </a>
+                })} */}
 
-                    </div>
-
-                </a>
-                <a className={`${s.project__list__item}`}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
-
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
-
-                    </div>
-
-                </a>
-                <a className={`${s.project__list__item}`}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
-
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
-
-                    </div>
-
-                </a>
-                <a className={`${s.project__list__item}`}>
-                    <div className={s.image__item}>
-                        <div className={s.blackout}></div>
-
-                        <span className={s.project__title}>
-                            Какой-то умный текст и многа букав
-                        </span>
-                        <span className={s.project__description}>
-                            Еще что-то про умный текст сверху
-                        </span>
-
-                    </div>
-
-                </a>
             </div>
         </div>
     )

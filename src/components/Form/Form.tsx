@@ -24,14 +24,14 @@ const Form = () => {
         setActiveInput('phone')
         
         if (formValue.phone === '') {
-            setFormValue({ email: formValue.email, phone: '+7 (___) ___ __ __', message: formValue.message })
+            setFormValue({ email: formValue.email, phone: '+7', message: formValue.message })
         }
-        e.target.setSelectionRange(2, 2)
+        
     }
 
     const phoneDeactive = () => {
         setActiveInput('')
-        if (formValue.phone === '+7 (___) ___ __ __') {
+        if (formValue.phone === '+7') {
             setFormValue({ email: formValue.email, phone: '', message: formValue.message })
         }
     }
@@ -52,6 +52,7 @@ const Form = () => {
                         <input type='email' onFocus={() => setActiveInput('email')} onBlur={() => setActiveInput('')}
                             value={formValue.email}
                             onChange={(e) => setFormValue({ email: e.target.value, phone: formValue.phone, message: formValue.message })}
+                            required
                         />
                         <label className={activeInput === 'email' || formValue.email !== '' ? s.placeholder__label__active : s.placeholder__label}>E-mail</label>
                     </div>
@@ -59,7 +60,7 @@ const Form = () => {
                         <input type='tel' onFocus={(e) => phoneActive(e)} onBlur={() => phoneDeactive()}
                             value={formValue.phone}
                             onChange={(e) => setFormValue({ email: formValue.email, phone: e.target.value, message: formValue.message })}
-
+                            required
                         />
                         <label className={activeInput === 'phone' || formValue.phone !== '' ? s.placeholder__label__active : s.placeholder__label}>Телефон</label>
                     </div>
@@ -67,6 +68,7 @@ const Form = () => {
                         <textarea className={s.form__textarea} onFocus={() => setActiveInput('message')} onBlur={() => setActiveInput('')}
                             value={formValue.message}
                             onChange={(e) => setFormValue({ email: formValue.email, phone: formValue.phone, message: e.target.value })}
+                            required
                         />
                         <label className={activeInput === 'message' || formValue.message !== '' ? s.placeholder__label__active : s.placeholder__label}>Сообщение</label>
                         <div className={s.form__file}>
@@ -79,7 +81,7 @@ const Form = () => {
                         </div>
                     </div>
                     <div className={s.form__button__wrapper}>
-                        <button>ОТПРАВИТЬ</button>
+                        <button >ОТПРАВИТЬ</button>
                         <span>Нажимая “Отправить”, Вы даете согласие на обработку персональных данных</span>
                     </div>
                 </form>
