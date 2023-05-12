@@ -4,6 +4,7 @@ import { useAppSelector } from '../../hooks/reduxHook'
 import { Item } from '../../store/slices/projectsSlice'
 import { storage } from '../../Storage/storage'
 import { useIsLoading, useItems } from '../../hooks/useStateHooks'
+import { url } from 'inspector'
 
 interface Props {
     items: Item[],
@@ -46,10 +47,10 @@ const Content = () => {
                 {!isLoading
                     ? items.map((el: Item) => {
                         return (
-                            <a className={s.project__list__item}>
-                                <div className={s.image__item}>
+                            <a key={el.id} className={s.project__list__item}>
+                                <div className={s.image__item} style={{"backgroundImage": `url(${el.image_dark})`}}>
                                     <div className={s.blackout}></div>
-
+                                    <div className={s.back__text}></div>
                                     <span className={s.project__title}>
                                         {el.title}
                                     </span>
