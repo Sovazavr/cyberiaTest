@@ -1,19 +1,19 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import s from "./Header.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
-import { useScrollDirection } from '../../hooks/useScrollDirection'
+import { useScrollDirection, useScrollPosition } from '../../hooks/useScrollDirection'
 
 interface Props {
     setOpenedMenu: Dispatch<SetStateAction<boolean>>,
 }
 
-const Header = ({setOpenedMenu} : Props) => {
+const Header = ({ setOpenedMenu }: Props) => {
     const scrollDirection = useScrollDirection()
-    
+    const scrollPosition = useScrollPosition()
 
     return (
         <>
-            <header className={scrollDirection === "down" ? s.header__down : s.header}>
+            <header className={scrollDirection === "down" ? s.header__down : (scrollPosition > 0 ? s.header__scroll : s.header)}>
                 <div className={s.header__content__wrapper}>
                     <span className={s.header__logo}>
                         <GlobalSVGSelector typeSvg={'company-name'} />
@@ -51,7 +51,7 @@ const Header = ({setOpenedMenu} : Props) => {
                     </ul>
                 </div>
             </header>
-            
+
         </>
     )
 }
