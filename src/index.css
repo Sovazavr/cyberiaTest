@@ -27,11 +27,20 @@ body {
   border-radius: 10px;
   border: solid 2px #616580;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
+ 
+}
+@media screen and (max-width: 700px){
+  *{
+    overflow-x: hidden;
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+

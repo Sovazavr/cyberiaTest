@@ -29,7 +29,7 @@
 }
 .text__description {
     //styleName: Desktop/Основной;
-
+    margin-right: 15px;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -208,5 +208,26 @@
     }
     .form__wrapper {
         padding-top: 20px;
+        
     }
+    .form__input__wrapper {
+        width: 90vw;
+    }
+    .form__textarea__wrapper{
+        width: 90vw;
+    }
+    .form__button__wrapper{
+        flex-direction: column;
+        width: 100vw;
+        align-items: center;
+        button{
+            width: 80vw;
+            margin-bottom: 30px;
+            height: 40px;
+        }
+        span {
+            width: 80vw;
+        }
+    }
+
 }

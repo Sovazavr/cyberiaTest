@@ -11,7 +11,7 @@
     z-index: 30;
     flex: 1 0 auto;
     min-height: fit-content;
-    
+
     width: 100%;
     transition: all 0.2s;
 }
@@ -19,9 +19,8 @@
     @extend .header;
     transition: all 0.2s;
     top: -6rem;
-    
 }
-.header__scroll{
+.header__scroll {
     @extend .header;
     background: #20212c;
 }
@@ -110,12 +109,31 @@
 .header__burger {
     display: none;
 }
-
+.header__menu {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    background: $background-default-color;
+    top: 0;
+    z-index: 35;
+    display: none;
+    flex-direction: column;
+    transition: all 0.4s;
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
+}
+.header__menu__opened{
+    @extend .header__menu;
+    transform: translateY(0);
+    
+}
 @media screen and (max-width: 1279px) {
     .header__links {
         display: none;
     }
-
+    .header__menu{
+        display: flex;
+    }
     .header__burger {
         cursor: pointer;
         display: flex;
@@ -124,7 +142,7 @@
         width: 30px;
         height: 25px;
     }
-    .header__content__wrapper{
+    .header__content__wrapper {
         width: 90vw;
     }
 
@@ -134,19 +152,7 @@
         border-radius: 8px;
         height: 4px;
     }
-    .header__menu {
-        position: fixed;
-        height: 100vh;
-        width: 100vw;
-        background: $background-default-color;
-        top: 0;
-        z-index: 35;
-        display: flex;
-        flex-direction: column;
-        overflow-y: scroll;
-        
-        transition: all 0.4s;
-    }
+
     .closed__button {
         margin-top: 50px;
         width: 100%;
@@ -207,5 +213,14 @@
         border-color: #2b2d3a;
         margin-bottom: 20px;
         padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .header__menu{
+        display: flex;
+    }
+    .closed__button {
+        overflow-x: visible;
     }
 }

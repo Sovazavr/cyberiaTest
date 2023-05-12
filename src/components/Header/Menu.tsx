@@ -2,13 +2,16 @@ import React, { Dispatch, SetStateAction } from 'react'
 import s from "./Header.module.scss"
 
 interface Props {
-
+    openedMenu: boolean,
     setOpenedMenu: Dispatch<SetStateAction<boolean>>,
 }
 
-const Menu = ({ setOpenedMenu }: Props) => {
+const Menu = ({openedMenu, setOpenedMenu }: Props) => {
+
+
+
     return (
-        <div className={s.header__menu} >
+        <div className={openedMenu ? s.header__menu__opened :s.header__menu} >
 
             <div className={s.closed__button}>
                 <div className={s.line__wrapper} onClick={() => setOpenedMenu(false)}>

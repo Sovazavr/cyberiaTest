@@ -22,7 +22,7 @@ function App() {
 
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
-  
+
   const projects = useAppSelector(state => state.projects)
   const dispatch = useAppDispatch()
 
@@ -32,15 +32,15 @@ function App() {
       firstRender.current = false
       // const projects = getProjectsData()
       dispatch(getProjectsThunk())
-      
-    // console.log("projectsType", typeof (projects.items));
-    // console.log("projectsitemsType", typeof (projects.items.items));
-      
-      
+
+      // console.log("projectsType", typeof (projects.items));
+      // console.log("projectsitemsType", typeof (projects.items.items));
+
+
     } else {
       console.log("projects", projects);
       // storage.setItem('items', projects.items)
-     
+
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
           setShowButton(true);
@@ -52,6 +52,14 @@ function App() {
 
     }
   }, [projects])
+
+  useEffect(() => {
+    if (openedMenu) {
+      document.body.style.overflowY = 'hidden'
+    } else{
+      document.body.style.overflowY = 'visible'
+    }
+  }, [openedMenu])
 
 
 
@@ -72,13 +80,14 @@ function App() {
       {/*  */}
 
       <Routes>
-        <Route path='/' element={<Content/>} />
+        <Route path='/' element={<Content />} />
         <Route path='/project' element={<Project />} />
       </Routes>
       <Form />
       <Footer />
-      {showButton ? <ScrollBtn /> : <></>}
-      {openedMenu ? <Menu setOpenedMenu={setOpenedMenu} /> : <></>}
+      {showButton && !openedMenu ? <ScrollBtn /> : <></>}
+      {/* {openedMenu ? <Menu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} /> : <></>} */}
+      <Menu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
     </div>
 
   );
