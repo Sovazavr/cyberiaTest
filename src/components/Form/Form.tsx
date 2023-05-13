@@ -1,7 +1,9 @@
-import React, { ChangeEvent, FocusEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FocusEvent, FormEvent, useEffect, useState } from 'react'
 import s from "./Form.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 import { setFormData } from '../../axios/axios';
+import { useStatus } from '../../hooks/useStateHooks';
+import { useAppSelector } from '../../hooks/reduxHook';
 
 
 interface FormValues {
@@ -15,7 +17,9 @@ const Form = () => {
     const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
     const [file, setFile] = useState<File | null>(null)
     const [activeInput, setActiveInput] = useState<string>('')
-    const [status, setStatus] = useState<number>(0)
+    const [statusMessage, setStatusMessage] = useState<string>('')
+    // const [status, setStatus] = useState<boolean | null>(useStatus())
+    const status = useAppSelector(state => state.projects.status)
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             setFile(e.target.files[0])
@@ -38,12 +42,23 @@ const Form = () => {
         }
     }
 
-    function formSubmit  (e:  React.FormEvent<HTMLFormElement>)  {
+    function formSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         setFormData(formValue.email, formValue.phone, formValue.message, file)
+
+        if (status === true) {
+            setStatusMessage('Ваша заявка успешно отправлена')
+        } else if (status === false) {
+            setStatusMessage('Не удалось отправить заявку, повторите отправку позднее')
+        } else {
+            setStatusMessage('')
+        }
         setFormValue({ email: '', phone: '', message: '' })
         setFile(null)
+
     }
+
+
 
 
     return (
@@ -78,8 +93,6 @@ const Form = () => {
                             value={formValue.message}
                             onChange={(e) => {
                                 setFormValue({ email: formValue.email, phone: formValue.phone, message: e.target.value })
-                                console.log(formValue.message);
-                                
                             }}
                             required
                         />
@@ -87,7 +100,7 @@ const Form = () => {
                         <div className={s.form__file}>
                             <span>{file ? file.name : ""}</span>
                             <div className={s.upload__wrapper}>
-                                <input id="upload" type="file" name="upload" onChange={handleFileChange} />
+                                <input id="upload" type="file" name="upload" onChange={handleFileChange} multiple/>
                                 <label htmlFor="upload"> <GlobalSVGSelector typeSvg='paperclip' /> </label>
 
                             </div>
@@ -96,6 +109,11 @@ const Form = () => {
                     <div className={s.form__button__wrapper}>
                         <button type='submit' >ОТПРАВИТЬ</button>
                         <span>Нажимая “Отправить”, Вы даете согласие на обработку персональных данных</span>
+                    </div>
+                    <div className={s.form__status__opened}>
+                        <span>
+                            {statusMessage}
+                        </span>
                     </div>
                 </form>
             </div>

@@ -15,6 +15,7 @@ import { getProjectsThunk, Item } from './store/slices/projectsSlice';
 
 
 import { useAppDispatch, useAppSelector } from './hooks/reduxHook';
+import { useItems } from './hooks/useStateHooks';
 
 
 
@@ -23,8 +24,11 @@ function App() {
   const [showButton, setShowButton] = useState<boolean>(false)
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
 
-  const projects = useAppSelector(state => state.projects)
+
+  const items = useItems()
+
   const dispatch = useAppDispatch()
+
 
   let firstRender = useRef(true)
   useLayoutEffect(() => {
@@ -38,7 +42,7 @@ function App() {
 
 
     } else {
-      console.log("projects", projects);
+
       // storage.setItem('items', projects.items)
 
       window.addEventListener("scroll", () => {
@@ -51,12 +55,12 @@ function App() {
 
 
     }
-  }, [projects])
+  }, [])
 
   useEffect(() => {
     if (openedMenu) {
       document.body.style.overflowY = 'hidden'
-    } else{
+    } else {
       document.body.style.overflowY = 'visible'
     }
   }, [openedMenu])
@@ -65,7 +69,12 @@ function App() {
 
   useEffect(() => {
     dispatch(getProjectsThunk())
+
   }, [dispatch]);
+
+
+
+
 
 
 
@@ -81,7 +90,10 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Content />} />
-        <Route path='/project' element={<Project />} />
+        <Route path='/project'>
+          <Route path=':id' element={<Project />} />
+        </Route>
+
       </Routes>
       <Form />
       <Footer />

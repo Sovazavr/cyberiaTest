@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import s from "./Header.module.scss"
 import { GlobalSVGSelector } from '../GlobalSVGSelector/GlobalSVGSelector'
 import { useScrollDirection, useScrollPosition } from '../../hooks/useScrollDirection'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     setOpenedMenu: Dispatch<SetStateAction<boolean>>,
@@ -10,12 +11,13 @@ interface Props {
 const Header = ({ setOpenedMenu }: Props) => {
     const scrollDirection = useScrollDirection()
     const scrollPosition = useScrollPosition()
+    const navigate=useNavigate()
 
     return (
         <>
             <header className={scrollDirection === "down" ? s.header__down : (scrollPosition > 0 ? s.header__scroll : s.header)}>
                 <div className={s.header__content__wrapper}>
-                    <span className={s.header__logo}>
+                    <span className={s.header__logo} onClick={()=>navigate("/")}>
                         <GlobalSVGSelector typeSvg={'company-name'} />
                     </span>
                     <div className={s.header__burger} onClick={() => setOpenedMenu(true)}>

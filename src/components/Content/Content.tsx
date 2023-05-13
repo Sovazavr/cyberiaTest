@@ -5,16 +5,15 @@ import { Item } from '../../store/slices/projectsSlice'
 import { storage } from '../../Storage/storage'
 import { useIsLoading, useItems } from '../../hooks/useStateHooks'
 import { url } from 'inspector'
+import { Link } from 'react-router-dom'
 
-interface Props {
-    items: Item[],
-}
+
 
 
 const Content = () => {
-    const items=useItems()
+    const items = useItems()
     // const projects = useAppSelector(state => state.projects)
-    console.log("items", items);
+    
     // console.log("projectsType", typeof (projects.items));
     // console.log("projectsitemsType", typeof (projects.items.items));
     // console.log("projectsitemsIt", projects.items.items[0]);
@@ -23,8 +22,12 @@ const Content = () => {
 
     // }, [projects])
     const isLoading = useIsLoading()
+    function upScroll(){
+        window.scrollTo({top: 0})
+    }
 
     
+
 
     return (
         <div className={`${s.block__content}`}>
@@ -47,20 +50,22 @@ const Content = () => {
                 {!isLoading
                     ? items.map((el: Item) => {
                         return (
-                            <a key={el.id} className={s.project__list__item}>
-                                <div className={s.image__item} style={{"backgroundImage": `url(${el.image_dark})`}}>
-                                    <div className={s.blackout}></div>
-                                    <div className={s.back__text}></div>
-                                    <span className={s.project__title}>
-                                        {el.title}
-                                    </span>
-                                    <span className={s.project__description}>
-                                        {el.description}
-                                    </span>
+                            <Link to={`/project/${el.slug}`} state={{ item: el }} onClick={upScroll}>
+                                <a key={el.id} className={s.project__list__item} >
+                                    <div className={s.image__item} style={{ "backgroundImage": `url(${el.image_dark})` }}>
+                                        <div className={s.blackout}></div>
+                                        <div className={s.back__text}></div>
+                                        <span className={s.project__title}>
+                                            {el.title}
+                                        </span>
+                                        <span className={s.project__description}>
+                                            {el.description}
+                                        </span>
 
-                                </div>
+                                    </div>
 
-                            </a>
+                                </a>
+                            </Link>
                         )
                     })
                     : <div>loading</div>
