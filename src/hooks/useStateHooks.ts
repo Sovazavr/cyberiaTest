@@ -20,6 +20,10 @@ export function useProject(){
     const project=useAppSelector(state=> state.projects.project.item)
     return project
 }
+export function useMoreProject(){
+    const project=useAppSelector(state=> state.projects.project.more_projects)
+    return project
+}
 
 export function useIsLoadingProject(){
     const isLoading=useAppSelector(state => state.projects.isLoadingProject)

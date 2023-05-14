@@ -7,6 +7,7 @@ import { useIsLoading, useItems } from '../../hooks/useStateHooks'
 import { url } from 'inspector'
 import { Link } from 'react-router-dom'
 import { LordIcon } from '../Loader/Loader'
+import { useUpScroll } from '../../hooks/useScroll'
 
 
 
@@ -23,9 +24,7 @@ const Content = () => {
 
     // }, [projects])
     const isLoading = useIsLoading()
-    function upScroll() {
-        window.scrollTo({ top: 0 })
-    }
+    
 
 
 
@@ -51,7 +50,7 @@ const Content = () => {
                 {!isLoading
                     ? items.map((el: Item) => {
                         return (
-                            <Link to={`/project/${el.slug}`} state={{ item: el }} onClick={upScroll}>
+                            <Link to={`/project/${el.slug}`} state={{ item: el }} onClick={useUpScroll}>
                                 <a key={el.id} className={s.project__list__item} >
                                     <div className={s.image__item} style={{ "backgroundImage": `url(${el.image_dark})` }}>
                                         <div className={s.blackout}></div>
