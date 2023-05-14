@@ -11,7 +11,7 @@ import { LordIcon } from '../Loader/Loader'
 const Project = () => {
     const location = useLocation()
     const { item } = location.state
-    console.log("PROJECT", item);
+    
 
     const dispatch = useAppDispatch()
     const project = useProject()
