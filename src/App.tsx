@@ -7,15 +7,9 @@ import Form from './components/Form/Form';
 import Footer from './components/Footer/Footer';
 import { ScrollBtn } from './components/ScrollBtn/ScrollBtn';
 import Menu from './components/Header/Menu';
-
 import { Route, Routes } from 'react-router-dom';
-
-
-import { getProjectsThunk, Item } from './store/slices/projectsSlice';
-
-
+import { getProjectsThunk } from './store/slices/projectsSlice';
 import { useAppDispatch} from './hooks/reduxHook';
-import { useIsLoading } from './hooks/useStateHooks';
 
 import { ProjectContainer } from './components/Project/ProjectContainer';
 import { ContentContainer } from './components/Content/ContentContainer';

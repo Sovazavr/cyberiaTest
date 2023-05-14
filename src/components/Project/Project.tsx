@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import s from "./Project.module.scss"
 import { Item, getProjectIdThunk } from '../../store/slices/projectsSlice'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/reduxHook'
 import { useIsLoadingProject, useProject } from '../../hooks/useStateHooks'
 import { LordIcon } from '../Loader/Loader'
@@ -11,7 +11,7 @@ import { LordIcon } from '../Loader/Loader'
 const Project = () => {
     const location = useLocation()
     const { item } = location.state
-    
+
 
     const dispatch = useAppDispatch()
     const project = useProject()
@@ -21,16 +21,30 @@ const Project = () => {
         dispatch(getProjectIdThunk(item.id))
     }, [dispatch])
 
+    const data = project.content
+    const navigate = useNavigate()
     return (
         !isLoading
             ? <div className={s.project__block}>
                 <div className={s.img__wrapper}>
                     <img src={`${project.image_dark}`} />
                 </div>
-                <div className={s.project__content}>
-                    <h1 className={s.project__title}>Название проекта</h1>
+                <div className={s.project__content__wrapper}>
+                    <div className={s.open__path}>
+                        <span className={s.begin__path}>Главная /</span>
+                        <span className={s.begin__path} onClick={() => navigate("/")}> Проекты / </span>
+                        <span className={s.end__path}>{project.title}</span>
+                    </div>
+                    <div className={s.project__content} >
+                        <div className={s.project__header}>
+                            <span className={s.project__title}>{project.title}</span>
+                            <span className={s.project__description}>{project.description}</span>
+                        </div>
+                        <div className={s.project__backend__data}
+                            dangerouslySetInnerHTML={{ __html: data }}
+                        />
+                    </div>
                 </div>
-
             </div>
             :
             <LordIcon

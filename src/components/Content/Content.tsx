@@ -31,7 +31,7 @@ const Content = () => {
 
 
     return (
-        <div className={`${s.block__content}`}>
+        <div className={s.block__content}>
             <div className={s.content__wrapper}>
                 <div className={s.open__path}>
                     <span className={s.begin__path}>Главная /</span>
