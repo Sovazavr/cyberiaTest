@@ -29,3 +29,8 @@ export function useIsLoadingProject(){
     const isLoading=useAppSelector(state => state.projects.isLoadingProject)
     return isLoading
 }
+
+export function useCategories(){
+    const categories=useAppSelector(state=>state.projects.categories.items)
+    return categories
+}

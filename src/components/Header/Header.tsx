@@ -38,7 +38,7 @@ const Header = ({ setOpenedMenu }: Props) => {
                             Услуги
                             <div className={s.hover__line}></div>
                         </li>
-                        <li className={s.header__link__item}>
+                        <li className={s.header__link__item} onClick={()=>navigate("/")}>
                             Проекты
                             <div className={s.hover__line}></div>
                         </li>

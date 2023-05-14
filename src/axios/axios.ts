@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Item, pushForm } from "../store/slices/projectsSlice"
+import { Category, Item, pushForm } from "../store/slices/projectsSlice"
 import { useState } from "react"
 
 
@@ -27,6 +27,19 @@ export async function getProjectIdData(id: number) {
     })
     return resultGetProjectId
 }
+export async function getProjectCategories() {
+
+    const result = await axios.get<Category[]>('https://backend.cyberia.studio/api/v1/project-categories').then(
+        (response) => {
+            const categories = response.data
+            return categories
+        }
+    ).catch((error) => {
+        console.log(error)
+    })
+    return result
+
+}
 
 export function setFormData(email: string, phone: string, message: string, file: File | null) {
 
@@ -47,13 +60,13 @@ export function setFormData(email: string, phone: string, message: string, file:
         .then(function (response) {
             console.log(response.status);
             pushForm(true)
-            
+
         })
         .catch(function (error) {
             console.log(error.status);
             pushForm(false)
         });
-    
+
 
 }
 

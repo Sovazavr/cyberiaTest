@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getProjectIdData, getProjectsData } from "../../axios/axios";
+import { getProjectCategories, getProjectIdData, getProjectsData } from "../../axios/axios";
 
 
-interface Category {
+export interface Category {
     id: number,
     name: string,
 }
@@ -41,6 +41,7 @@ type TypeState = {
     items: any;
     project: any,
     isLoadingProject: boolean,
+    categories: any,
 }
 const initialState: TypeState = {
     status: null,
@@ -50,11 +51,12 @@ const initialState: TypeState = {
     project: {
         item: {},
         more_projects: [],
-    }
-
+    },
+    categories: []
 }
 export const getProjectsThunk = createAsyncThunk("get/projects", async () => getProjectsData())
 export const getProjectIdThunk = createAsyncThunk("get/project/id", async (id: number) => getProjectIdData(id))
+export const getCategories = createAsyncThunk("get/categories", async ()=> getProjectCategories())
 
 export const projectsSlice = createSlice({
     name: 'projects',
@@ -90,7 +92,9 @@ export const projectsSlice = createSlice({
 
             state.isLoadingProject = true;
         });
-
+        builder.addCase(getCategories.fulfilled, (state, action)=> {
+            state.categories=action.payload
+        })
     }
 })
 

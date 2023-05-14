@@ -1,17 +1,18 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import s from "./Header.module.scss"
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     openedMenu: boolean,
     setOpenedMenu: Dispatch<SetStateAction<boolean>>,
 }
 
-const Menu = ({openedMenu, setOpenedMenu }: Props) => {
-
+const Menu = ({ openedMenu, setOpenedMenu }: Props) => {
+    const navigate = useNavigate()
 
 
     return (
-        <div className={openedMenu ? s.header__menu__opened :s.header__menu} >
+        <div className={openedMenu ? s.header__menu__opened : s.header__menu} >
 
             <div className={s.closed__button}>
                 <div className={s.line__wrapper} onClick={() => setOpenedMenu(false)}>
@@ -28,7 +29,7 @@ const Menu = ({openedMenu, setOpenedMenu }: Props) => {
                     Услуги
                     <div className={s.hover__line}></div>
                 </li>
-                <li className={s.header__link__item}>
+                <li className={s.header__link__item} onClick={() => { navigate("/"); setOpenedMenu(false) }}>
                     Проекты
                     <div className={s.hover__line}></div>
                 </li>

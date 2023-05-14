@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import { ScrollBtn } from './components/ScrollBtn/ScrollBtn';
 import Menu from './components/Header/Menu';
 import { Route, Routes } from 'react-router-dom';
-import { getProjectsThunk } from './store/slices/projectsSlice';
+import { getCategories, getProjectsThunk } from './store/slices/projectsSlice';
 import { useAppDispatch} from './hooks/reduxHook';
 
 import { ProjectContainer } from './components/Project/ProjectContainer';
@@ -64,7 +64,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getProjectsThunk())
-
+    dispatch(getCategories())
   }, [dispatch]);
 
 

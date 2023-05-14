@@ -132,7 +132,8 @@ a {
     color: $text-default-color;
     padding-inline-start: 0px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
 }
 .list__filter__item {
     display: flex;
@@ -150,6 +151,11 @@ a {
         background-color: $text-default-color;
         color: $text-light-color;
     }
+}
+.list__filter__item__selected{
+    @extend .list__filter__item;
+    transition: all 0.2s;
+    background-color: $support-color;
 }
 
 @keyframes opacity {
