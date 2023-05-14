@@ -6,6 +6,7 @@ import { storage } from '../../Storage/storage'
 import { useIsLoading, useItems } from '../../hooks/useStateHooks'
 import { url } from 'inspector'
 import { Link } from 'react-router-dom'
+import { LordIcon } from '../Loader/Loader'
 
 
 
@@ -13,7 +14,7 @@ import { Link } from 'react-router-dom'
 const Content = () => {
     const items = useItems()
     // const projects = useAppSelector(state => state.projects)
-    
+
     // console.log("projectsType", typeof (projects.items));
     // console.log("projectsitemsType", typeof (projects.items.items));
     // console.log("projectsitemsIt", projects.items.items[0]);
@@ -22,11 +23,11 @@ const Content = () => {
 
     // }, [projects])
     const isLoading = useIsLoading()
-    function upScroll(){
-        window.scrollTo({top: 0})
+    function upScroll() {
+        window.scrollTo({ top: 0 })
     }
 
-    
+
 
 
     return (
@@ -68,24 +69,13 @@ const Content = () => {
                             </Link>
                         )
                     })
-                    : <div>loading</div>
+                    : <LordIcon
+                        src={'https://cdn.lordicon.com/dtgezzsi.json'}
+                        trigger={'loop'}
+                        colors={{ primary: '#303958', secondary: '#2d76f9' }}
+                        size={200}
+                    ></LordIcon>
                 }
-                {/* {items.map((el: any) => {
-                    <a className={s.project__list__item}>
-                        <div className={s.image__item}>
-                            <div className={s.blackout}></div>
-
-                            <span className={s.project__title}>
-                                {el.title}
-                            </span>
-                            <span className={s.project__description}>
-                                {el.description}
-                            </span>
-
-                        </div>
-
-                    </a>
-                })} */}
 
             </div>
         </div>

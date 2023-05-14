@@ -4,6 +4,7 @@ import { Item, getProjectIdThunk } from '../../store/slices/projectsSlice'
 import { useLocation } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/reduxHook'
 import { useIsLoadingProject, useProject } from '../../hooks/useStateHooks'
+import { LordIcon } from '../Loader/Loader'
 
 
 
@@ -31,7 +32,14 @@ const Project = () => {
                 </div>
 
             </div>
-            : <div>Loader</div>
+            :
+            <LordIcon
+                src={'https://cdn.lordicon.com/dtgezzsi.json'}
+                trigger={'loop'}
+                colors={{ primary: '#303958', secondary: '#2d76f9' }}
+                size={200}
+            ></LordIcon>
+
     )
 }
 

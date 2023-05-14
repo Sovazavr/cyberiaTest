@@ -15,6 +15,8 @@
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.4.0",
+    "lord-icon-element": "^4.1.1",
+    "lottie-web": "^5.11.0",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

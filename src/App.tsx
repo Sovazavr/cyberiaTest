@@ -15,7 +15,8 @@ import { getProjectsThunk, Item } from './store/slices/projectsSlice';
 
 
 import { useAppDispatch, useAppSelector } from './hooks/reduxHook';
-import { useItems } from './hooks/useStateHooks';
+import { useIsLoading, useItems } from './hooks/useStateHooks';
+import { LordIcon } from './components/Loader/Loader';
 
 
 
@@ -25,7 +26,7 @@ function App() {
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
 
 
-  const items = useItems()
+  const isLoading = useIsLoading()
 
   const dispatch = useAppDispatch()
 
@@ -34,11 +35,9 @@ function App() {
   useLayoutEffect(() => {
     if (firstRender.current) {
       firstRender.current = false
-      // const projects = getProjectsData()
+
       dispatch(getProjectsThunk())
 
-      // console.log("projectsType", typeof (projects.items));
-      // console.log("projectsitemsType", typeof (projects.items.items));
 
 
     } else {
@@ -89,7 +88,12 @@ function App() {
       {/*  */}
 
       <Routes>
-        <Route path='/' element={<Content />} />
+        <Route path='/' element={!isLoading ? <Content /> : <LordIcon
+          src={'https://cdn.lordicon.com/dtgezzsi.json'}
+          trigger={'loop'}
+          colors={{ primary: '#303958', secondary: '#2d76f9' }}
+          size={200}
+        />} />
         <Route path='/project'>
           <Route path=':id' element={<Project />} />
         </Route>
