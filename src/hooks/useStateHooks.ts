@@ -11,6 +11,10 @@ export function useIsLoading(){
     const isLoading = useAppSelector(state => state.projects.isLoading)
     return isLoading
 }
+export function useIsLoadingCategories(){
+    const isLoading = useAppSelector(state => state.projects.isLoadingCategories)
+    return isLoading
+}
 
 export function useStatus(){
     const status=useAppSelector(state=>state.projects.status)

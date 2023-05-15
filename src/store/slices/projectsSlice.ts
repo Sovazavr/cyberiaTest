@@ -42,10 +42,12 @@ type TypeState = {
     project: any,
     isLoadingProject: boolean,
     categories: any,
+    isLoadingCategories: boolean,
 }
 const initialState: TypeState = {
     status: null,
     isLoading: true,
+    isLoadingCategories: true,
     isLoadingProject: true,
     items: [],
     project: {
@@ -94,7 +96,11 @@ export const projectsSlice = createSlice({
         });
         builder.addCase(getCategories.fulfilled, (state, action)=> {
             state.categories=action.payload
-        })
+            state.isLoadingCategories=false
+        });
+        builder.addCase(getCategories.pending, (state)=> {
+            state.isLoadingCategories=true
+        });
     }
 })
 

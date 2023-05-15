@@ -41,19 +41,22 @@ export async function getProjectCategories() {
 
 }
 
-export function setFormData(email: string, phone: string, message: string, file: File | null) {
+export function setFormData(email: string, phone: string, message: string, fileList: FileList | null) {
 
-
+    const files = fileList ? Array.from(fileList) : [];
     let formData = new FormData();
-    if (file) {
-        formData.append('file', file)
+    if (files) {
+        files.forEach((file : File, i :number) => {
+            formData.append(`file-${i}`, file, file.name);
+          });
+        // formData.append('file', file)
     }
 
     const data = {
         email,
         phone,
         message,
-        attachment: file,
+        attachment: files,
     }
 
     axios.post('https://backend.cyberia.studio/api/v1/feedbacks', data)

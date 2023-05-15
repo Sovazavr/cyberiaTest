@@ -8,6 +8,7 @@ import { LordIcon } from '../Loader/Loader'
 import { Link } from 'react-router-dom'
 import {useUpScroll} from '../../hooks/useScroll'
 import { Arrow } from './Arrow'
+import { LazyImage } from './LazyImage'
 
 
 
@@ -21,7 +22,7 @@ const Project = () => {
     const more_projects = useMoreProject()
     const isLoading = useIsLoadingProject()
 
-    console.log("MORE_PROJECT_ITEM", more_projects);
+    
     
     useEffect(() => {
         dispatch(getProjectIdThunk(item.id))
@@ -39,7 +40,8 @@ const Project = () => {
         !isLoading
             ? <div className={s.project__block}>
                 <div className={s.img__wrapper}>
-                    <img src={`${project.image_dark}`} />
+                    {/* <img src={`${project.image_dark}`} /> */}
+                    <LazyImage image={{src : `${project.image_dark}`}}/>
                 </div>
                 <div className={s.project__content__wrapper}>
                     <div className={s.open__path}>

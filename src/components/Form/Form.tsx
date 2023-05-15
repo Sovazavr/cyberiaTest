@@ -15,16 +15,25 @@ interface FormValues {
 
 const Form = () => {
     const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
-    const [file, setFile] = useState<File | null>(null)
+    const [file, setFile] = useState<FileList | null>(null)
+
+    const [fileArray, setFileArray] = useState<File[]>([])
+
     const [activeInput, setActiveInput] = useState<string>('')
     const [statusMessage, setStatusMessage] = useState<string>('')
     // const [status, setStatus] = useState<boolean | null>(useStatus())
     const status = useAppSelector(state => state.projects.status)
+    // const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //     if (e.target.files) {
+    //         setFile(e.target.files[0])
+    //     }
+    // }
+
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setFile(e.target.files[0])
-        }
-    }
+        setFile(e.target.files);
+    };
+
+
 
     const phoneActive = (e: FocusEvent<HTMLInputElement, Element>) => {
         setActiveInput('phone')
@@ -58,6 +67,10 @@ const Form = () => {
 
     }
 
+    useEffect(() => {
+        file ? setFileArray(Array.from(file)) : setFileArray([]);
+
+    }, [file])
 
 
 
@@ -98,9 +111,9 @@ const Form = () => {
                         />
                         <label className={activeInput === 'message' || formValue.message !== '' ? s.placeholder__label__active : s.placeholder__label}>Сообщение</label>
                         <div className={s.form__file}>
-                            <span>{file ? file.name : ""}</span>
+                            {fileArray.map((file: File) => <span>{file ? file.name : ""}</span>)}
                             <div className={s.upload__wrapper}>
-                                <input id="upload" type="file" name="upload" onChange={handleFileChange} multiple/>
+                                <input id="upload" type="file" name="upload" onChange={handleFileChange} multiple />
                                 <label htmlFor="upload"> <GlobalSVGSelector typeSvg='paperclip' /> </label>
 
                             </div>
