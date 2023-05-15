@@ -23,7 +23,7 @@ const Form = () => {
     const [activeInput, setActiveInput] = useState<string>('')
     const [statusMessage, setStatusMessage] = useState<string>('')
     // const [status, setStatus] = useState<boolean | null>(useStatus())
-    const status = useAppSelector(state => state.projects.status)
+    const status = useStatus()
     // const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     //     if (e.target.files) {
     //         setFile(e.target.files[0])
@@ -72,11 +72,13 @@ const Form = () => {
 
         if (status === true) {
             setStatusMessage('Ваша заявка успешно отправлена')
+            
         } else if (status === false) {
             setStatusMessage('Не удалось отправить заявку, повторите отправку позднее')
         } else {
             setStatusMessage('')
         }
+        
         setFormValue({ email: '', phone: '', message: '' })
         setFile(null)
 
