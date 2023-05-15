@@ -16,7 +16,8 @@ interface FormValues {
 const Form = () => {
     const [formValue, setFormValue] = useState<FormValues>({ email: '', phone: '', message: '' });
     const [file, setFile] = useState<FileList | null>(null)
-
+    const [tel, setTel] = useState('')
+    const [unRegTel, setUnRegTel] = useState('')
     const [fileArray, setFileArray] = useState<File[]>([])
 
     const [activeInput, setActiveInput] = useState<string>('')
@@ -29,26 +30,40 @@ const Form = () => {
     //     }
     // }
 
+
+    
+        
+    
+
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFile(e.target.files);
     };
+
+    const phoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        
+        setFormValue({ email: formValue.email, phone: e.target.value, message: formValue.message })
+    }
 
 
 
     const phoneActive = (e: FocusEvent<HTMLInputElement, Element>) => {
         setActiveInput('phone')
+        e.target.placeholder = "+7(___)___-__-__"
 
-        if (formValue.phone === '') {
-            setFormValue({ email: formValue.email, phone: '+7', message: formValue.message })
-        }
+        //  if (formValue.phone === '') {
+        //      setFormValue({ email: formValue.email, phone: tel.join(''), message: formValue.message })
+        //  }
 
     }
 
-    const phoneDeactive = () => {
+
+    const phoneDeactive = (e: FocusEvent<HTMLInputElement, Element>) => {
         setActiveInput('')
-        if (formValue.phone === '+7') {
-            setFormValue({ email: formValue.email, phone: '', message: formValue.message })
-        }
+        e.target.placeholder = ""
+
+        //  if (formValue.phone === '+7') {
+        //      setFormValue({ email: formValue.email, phone: '', message: formValue.message })
+        //  }
     }
 
     function formSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -65,11 +80,11 @@ const Form = () => {
         setFormValue({ email: '', phone: '', message: '' })
         setFile(null)
 
+
     }
 
     useEffect(() => {
         file ? setFileArray(Array.from(file)) : setFileArray([]);
-
     }, [file])
 
 
@@ -84,7 +99,7 @@ const Form = () => {
                         чем мы можем быть полезны: реализовать идею или выделить разработчиков для ИТ-команды.
                         Чем больше вы нам расскажете — тем продуктивнее будет дальнейшее обсуждение.</span>
                 </div>
-                <form className={s.form__wrapper} onSubmit={formSubmit}>
+                <form method='POST' className={s.form__wrapper} onSubmit={formSubmit}>
                     <div className={s.form__input__wrapper}>
                         <input type='email' onFocus={() => setActiveInput('email')} onBlur={() => setActiveInput('')}
                             value={formValue.email}
@@ -94,9 +109,11 @@ const Form = () => {
                         <label className={activeInput === 'email' || formValue.email !== '' ? s.placeholder__label__active : s.placeholder__label}>E-mail</label>
                     </div>
                     <div className={s.form__input__wrapper}>
-                        <input type='tel' onFocus={(e) => phoneActive(e)} onBlur={() => phoneDeactive()}
+                        <input id='online_phone' type='tel' onFocus={(e) => phoneActive(e)} onBlur={(e) => phoneDeactive(e)}
                             value={formValue.phone}
-                            onChange={(e) => setFormValue({ email: formValue.email, phone: e.target.value, message: formValue.message })}
+                            onChange={(e) => phoneChange(e)}
+                            // pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+
                             required
                         />
                         <label className={activeInput === 'phone' || formValue.phone !== '' ? s.placeholder__label__active : s.placeholder__label}>Телефон</label>
